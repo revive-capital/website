@@ -1,3 +1,10 @@
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/InterVariable.woff2") format("woff2");
+}
 :root {
   --amber: #ffb020;
   --navy: #0b1f3b;
@@ -38,14 +45,18 @@ body {
   gap: 8px;
   padding: 10px 16px;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: 10px;
   background: var(--bg);
   color: var(--fg);
   font: 600 13px Inter, system-ui, sans-serif;
   cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
 }
+.theme:hover { border-color: var(--amber); }
+.theme:active { transform: scale(0.97); }
 .theme::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(90deg, var(--amber) 50%, var(--fg) 50%); }
-.theme:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.theme:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+.num { font-feature-settings: "tnum", "zero"; }
 footer {
   display: grid;
   grid-template-columns: repeat(4, auto);
