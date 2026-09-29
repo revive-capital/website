@@ -27,6 +27,8 @@
   --line: rgba(255, 253, 244, 0.16);
   --muted: rgba(255, 253, 244, 0.66);
 }
+/* The bands deliberately bleed past the edges; clip at the root so phones never zoom out to fit them */
+html { overflow-x: hidden; }
 body {
   margin: 0;
   background: var(--bg);
@@ -59,7 +61,7 @@ body {
 .num { font-feature-settings: "tnum", "zero"; }
 footer {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(3, auto);
   justify-content: space-between;
   gap: 16px 40px;
   width: min(1200px, 100% - 32px);
@@ -69,6 +71,11 @@ footer {
   border-top: 1px solid var(--line);
 }
 footer h2 { margin: 0 0 4px; font-size: 13px; font-weight: 800; }
+footer .reg { margin-top: 8px; }
 footer p, footer address { margin: 0; font-style: normal; color: var(--muted); }
 footer a { color: var(--fg); font-weight: 600; text-decoration-color: var(--amber); text-underline-offset: 3px; }
-@media (max-width: 720px) { footer { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 720px) {
+  footer { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 20px; overflow-wrap: anywhere; padding: 16px 0 20px; font-size: 12px; line-height: 1.5; }
+  footer h2 { font-size: 12px; }
+  footer > div:first-child { grid-column: 1 / -1; }
+}
